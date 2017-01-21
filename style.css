@@ -2,19 +2,19 @@
     --sfondo: #121212;
     --heading: #FFF;
     --enfasi1: #00d7b6;
-    --enfasi2: #d70066;
-    --testo: #555;
+    --testo: #666;
+    --selezione: #AAA;
     --leftmargin: 24px;
 }
 
 ::selection {
     color: #FFFFFF;
-    background-color: var(--enfasi1);
+    background-color: var(--selezione);
 }
 
 ::-moz-selection {
     color: #FFFFFF;
-    background-color: var(--enfasi1);
+    background-color: var(--selezione);
 }
 
 body {
@@ -32,14 +32,14 @@ body {
 }
 
 .foto-clip{
-  /*
-  Ensure background is added first
-  */  
-  background-image: url(src/bg1.JPG);
-  
-   background-attachment: fixed;
-  -webkit-text-fill-color: transparent;
-  -webkit-background-clip: text;
+    /*
+    Assicurarsi che lo sfondo sia stato aggiunto
+    */  
+    background-image: url(src/bg1.JPG);
+
+    background-attachment: fixed;
+    -webkit-text-fill-color: transparent;
+    -webkit-background-clip: text;
 }
 
 h1 {
@@ -52,7 +52,7 @@ h1 {
     color: var(--heading);
     background-color: var(--enfasi1);
     text-transform: uppercase;
-    line-height: 0.6;
+    line-height: 0.7;
 }
 
 h2 {
@@ -97,14 +97,14 @@ a {
 
     .header {
         position: absolute;
-        margin: 0px;
+        margin: 0 0 0 0;
         left: 12px;
-        width: 320px;
+        width: 90%;
     }
 
     h1 {
-        font-size: 64pt;
-        line-height: 0.8;
+        font-size: 20vw;
+        line-height: 12vw;
     }
 
     h2 {
@@ -116,7 +116,8 @@ a {
     }
 
     .testo-intro {
-        width: 280px;
+        width: 95%;
+        max-width: 350px;
     }
 
 }
