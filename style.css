@@ -72,6 +72,12 @@ h3 {
     color: var(--testo);
 }
 
+a {
+    text-decoration: underline;
+    font-family: 'Helvetica', sans-serif;
+    color: var(--enfasi2);
+}
+
 @media only screen and (max-width: 800px) {
 
     .header {
