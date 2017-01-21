@@ -1,9 +1,10 @@
 :root {
     --sfondo: #121212;
+    --heading: #FFF;
     --enfasi1: #00d7b6;
     --enfasi2: #d70066;
     --testo: #555;
-    --leftmargin: 6px;
+    --leftmargin: 24px;
 }
 
 ::selection {
@@ -27,43 +28,56 @@ body {
     margin: inherit;
     left: 25px;
     bottom: 25px;
-    width: 85%;
+    width: 750px;
+}
+
+.foto-clip{
+  /*
+  Ensure background is added first
+  */  
+  background-image: url(src/bg1.JPG);
+  
+   background-attachment: fixed;
+  -webkit-text-fill-color: transparent;
+  -webkit-background-clip: text;
 }
 
 h1 {
     position: relative;
     margin: 0 0 0 0;
-    font-size: 96pt;
+    padding: 10px;
+    font-size: 128pt;
     font-family: 'Helvetica', 'Arial', sans-serif;
     font-weight: 800;
-    color: var(--testo);
+    color: var(--heading);
+    background-color: var(--enfasi1);
     text-transform: uppercase;
-    line-height: 1;
+    line-height: 0.6;
 }
 
 h2 {
     position: relative;
-    margin: 0 0 24 0;
+    margin: 0 0 0 0;
     left: var(--leftmargin);
     font-size: 14pt;
-    font-family: sans-serif;
-    font-weight: 500;
-    color: var(--enfasi1);
+    font-family: 'Roboto Mono', monospace;
+    font-weight: 300;
+    color: var(--heading);
 }
 
 h3 {
     position: relative;
-    margin: 0 0 0 0;
+    margin: 0 0 24 0;
     left: var(--leftmargin);
-    font-size: 14pt;
-    font-family: sans-serif;
-    font-weight: 500;
-    color: var(--enfasi2);
+    font-size: 11pt;
+    font-family: 'Roboto Mono', monospace;
+    font-weight: 300;
+    color: var(--heading);
 }
 
 .testo-intro {
     position: relative;
-    margin: inherit;
+    margin: 0 0 0 0;
     left: var(--leftmargin);
     width: 450px;
     font-size: 11pt;
@@ -74,8 +88,9 @@ h3 {
 
 a {
     text-decoration: underline;
-    font-family: 'Helvetica', sans-serif;
-    color: var(--enfasi2);
+    font-family: 'Roboto Mono', monospace;
+    font-weight: 300;
+    color: var(--heading);
 }
 
 @media only screen and (max-width: 800px) {
@@ -84,19 +99,20 @@ a {
         position: absolute;
         margin: 0px;
         left: 12px;
-        bottom: 25px;
+        width: 320px;
     }
 
     h1 {
         font-size: 64pt;
+        line-height: 0.8;
     }
 
     h2 {
-        margin-bottom: 20px;
+        font-size: 12pt;
     }
 
     h3 {
-        font-size: 14pt;
+        font-size: 12pt;
     }
 
     .testo-intro {
