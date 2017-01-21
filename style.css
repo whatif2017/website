@@ -28,7 +28,6 @@ body {
     margin: inherit;
     left: 25px;
     bottom: 25px;
-    width: 750px;
 }
 
 .foto-clip{
@@ -46,13 +45,17 @@ h1 {
     position: relative;
     margin: 0 0 0 0;
     padding: 10px;
-    font-size: 128pt;
+    font-size: 20vw;
     font-family: 'Helvetica', 'Arial', sans-serif;
     font-weight: 800;
     color: var(--heading);
     background-color: var(--enfasi1);
     text-transform: uppercase;
     line-height: 0.7;
+}
+
+.last {
+    margin-bottom: 24px;
 }
 
 h2 {
@@ -105,14 +108,20 @@ a {
     h1 {
         font-size: 20vw;
         line-height: 12vw;
+        margin: 0 0 0 0;
+    }
+    
+    .last {
+        margin-bottom: 8px;
     }
 
     h2 {
-        font-size: 12pt;
+        font-size: 11pt;
     }
 
     h3 {
-        font-size: 12pt;
+        font-size: 9pt;
+        margin: 0 0 8 0;
     }
 
     .testo-intro {
