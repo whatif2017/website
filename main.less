@@ -1,0 +1,154 @@
+// VARIABLES
+
+@import 'https://fonts.googleapis.com/css?family=Rubik:300,500';
+
+
+@BODYFONT:      'Rubik', sans-serif;
+
+@BLACK:         #000000;
+@WHITE:         #FFFFFF;
+@GREY:          #242424;
+@LIGHT-GREY:    #010101;
+@DARK-GREY:     #161616;
+
+@PURPLE:        #ad34e5;
+@PINK:          #ff0080;
+@AZURE:         #0098f8;
+@GREEN:         #4CAF50;
+@LIGHT-GREEN:   #00e38d;
+@RED:           #ff4834;
+@YELLOW:        #ffd748;
+
+
+.purple         {color: @PURPLE}
+.pink           {color: @PINK}
+.azure          {color: @AZURE}
+.green          {color: @GREEN}
+.light-green    {color: @LIGHT-GREEN}
+.red            {color: @RED}
+.yellow         {color: @YELLOW}
+
+
+.animate(@seconds){
+    -webkit-transition: all @seconds ease-in-out; 
+    -moz-transition: all @seconds  ease-in-out; 
+    -o-transition: all @seconds  ease-in-out; 
+    transition: all @seconds ease-in-out;
+}
+
+
+//GLOBAL
+
+html{
+    width: 100%;
+    height: 100%;
+}
+
+body{
+    margin: 0;
+    font-family: @BODYFONT;
+    padding: 0;
+    width: 100%;
+    font-size: 18px;
+    font-weight: 300;
+    -webkit-font-smoothing: antialiased;
+    background: @DARK-GREY;
+    height: 100%;
+    color: @WHITE;
+}
+
+a{
+    color: inherit;
+    text-decoration: none;
+    .animate(0.2s);
+}
+
+b{
+    font-weight: 500;
+}
+
+
+// HEADER
+
+header{
+padding: 25px; color: @WHITE; position: fixed; top: 0; left:  0;
+    
+    
+    #menu{
+    clear: both; overflow: hidden;
+        
+         li{list-style: none; float: left; margin: 0 25px 0 0; text-transform: uppercase; font-weight: 300; font-size: 14px; letter-spacing: 0.1em;}
+    }
+    
+    #logo{
+    padding: 25px 0 0 0;
+        img{
+            width: 300px;
+        }
+    }
+    
+}
+
+
+#split{
+width: 100%; box-sizing: border-box;
+    
+    #timespace{
+    margin-left: 50vw; height: 100%; width: 50vw; padding: 70px 25px 25px 25px; box-sizing: border-box; font-size: 28px; letter-spacing: 0.1em;
+    }
+}
+
+
+
+#random_obj{
+    width: 100%;
+    position: fixed;
+    bottom: 0; 
+    right: 0;
+    left: 0;
+    overflow: hidden;
+    
+    .square{width: 25%; height: auto; padding-top: 25%; float: left;}
+}
+
+
+
+
+
+@media screen and (max-width: 700px) {
+    header{
+        #logo{
+            img{
+                width: 200px;
+            }
+        }
+    }
+}
+
+
+@media screen and (max-width: 400px) {
+    header{
+    position: relative;
+        
+        #logo{
+            img{
+                width: 200px;
+            }
+        }
+    }
+    
+    #split{
+        #timespace{
+        height: auto; margin-left:  0; width: 100%; padding: 0 25px 25px 25px; font-size: 18px;
+        }
+    }
+    
+    #random_obj{
+        position: relative;
+        .square{width: 100%; padding-top: 100%;}
+    }
+    
+    
+}
+
+
