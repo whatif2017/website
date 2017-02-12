@@ -1,5 +1,3 @@
-var gn = new GyroNorm();
-
 var w = window.innerWidth,
     h = window.innerHeight,
     halfWidth = w / 2,
@@ -7,7 +5,10 @@ var w = window.innerWidth,
     aspect = w / h,
     radiantX = 0,
     radiantY = 0,
-    radius = 5;
+    radius = 5,
+    orientX = 0,
+    orientY = 0,
+    orientZ = 0;
 
 var scene = new THREE.Scene(),
     camera = new THREE.PerspectiveCamera(75, aspect, 1, 50),
@@ -17,17 +18,16 @@ var scene = new THREE.Scene(),
     }),
     lights = [],
     ambientLight = new THREE.AmbientLight(0x000000);
-lights[0] = new THREE.PointLight(0xFFFFFF, 1, 0);
-lights[1] = new THREE.PointLight(0xFFFFFF, 1, 0);
-lights[2] = new THREE.PointLight(0xFFFFFF, 1, 0);
+lights[0] = new THREE.PointLight(0xF5866D, 1, 0);
+lights[1] = new THREE.PointLight(0xF5866D, 1, 0);
+lights[2] = new THREE.PointLight(0xF5866D, 1, 0);
 
 var mesh,
     meshPosition = new THREE.Vector3(0, 0, 0),
     material = new THREE.MeshPhongMaterial({
-        color: 0xF5866D,
-        emissive: 0x333333,
-        specular: 0xAAAAAA,
-        shininess: 65,
+        color: 0xFFFFFF,
+        emissive: 0x0,
+        shininess: 100,
         shading: THREE.SmoothShading
     });
 
@@ -87,35 +87,25 @@ function mousePosition(e) {
 }
 
 function render() {
+    gyro.getOrientation();
     requestAnimationFrame(render);
-    camera.position.x = Math.sin(radiantX) * radius;
-    camera.position.y = Math.sin(radiantY) * radius;
-    camera.position.z = (Math.cos(radiantX) + Math.cos(radiantY)) + radius;
+    if (gyro.hasFeature('devicemotion')) {
+        camera.position.x = Math.sin(orientZ) * radius;
+        camera.position.y = Math.sin(orientY) * radius;
+        camera.position.z = (Math.cos(orientZ) + Math.cos(orientY)) + radius;
+    } else {
+        camera.position.x = Math.sin(radiantX) * radius;
+        camera.position.y = Math.sin(radiantY) * radius;
+        camera.position.z = (Math.cos(radiantX) + Math.cos(radiantY)) + radius;
+    }
 
     camera.lookAt(meshPosition);
     renderer.render(scene, camera);
 }
 
-gn.init().then(function() {
-    gn.start(function(data) {
-        // Process:
-        // data.do.alpha    ( deviceorientation event alpha value )
-        // data.do.beta     ( deviceorientation event beta value )
-        // data.do.gamma    ( deviceorientation event gamma value )
-        // data.do.absolute ( deviceorientation event absolute value )
-
-        // data.dm.x        ( devicemotion event acceleration x value )
-        // data.dm.y        ( devicemotion event acceleration y value )
-        // data.dm.z        ( devicemotion event acceleration z value )
-
-        // data.dm.gx       ( devicemotion event accelerationIncludingGravity x value )
-        // data.dm.gy       ( devicemotion event accelerationIncludingGravity y value )
-        // data.dm.gz       ( devicemotion event accelerationIncludingGravity z value )
-
-        // data.dm.alpha    ( devicemotion event rotationRate alpha value )
-        // data.dm.beta     ( devicemotion event rotationRate beta value )
-        // data.dm.gamma    ( devicemotion event rotationRate gamma value )
-    });
-}).catch(function(e) {
-    // Catch if the DeviceOrientation or DeviceMotion is not supported by the browser or device
+gyro.startTracking(function(o) {
+    // o.x, o.y, o.z for accelerometer
+    // o.alpha, o.beta, o.gamma for gyro
+    orientY = o.beta / 90 * Math.PI;
+    orientZ = o.gamma / 90 * Math.PI;
 });
